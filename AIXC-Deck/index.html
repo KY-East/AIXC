@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIXC - Economy of Decentralized Intelligent Asset Infrastructure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #7c3aed;
+            --accent-color: #06b6d4;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--bg-light);
+        }
+
+        /* 侧边导航 */
+        .side-nav {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 15px;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .side-nav a {
+            display: block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--text-light);
+            margin: 15px 0;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .side-nav a:hover,
+        .side-nav a.active {
+            background: var(--primary-color);
+            transform: scale(1.5);
+        }
+
+        .side-nav a:hover::after {
+            content: attr(data-label);
+            position: absolute;
+            right: 25px;
+            top: -5px;
+            background: var(--text-dark);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        /* Section 容器 */
+        .section {
+            min-height: 100vh;
+            padding: 80px 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .section:nth-child(even) {
+            background: var(--bg-white);
+        }
+
+        .section-header {
+            margin-bottom: 50px;
+        }
+
+        .section-number {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary-color);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            color: var(--text-light);
+            max-width: 800px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-1);
+            color: white;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-logo {
+            font-size: 80px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .hero-title {
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            max-width: 900px;
+            line-height: 1.5;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            font-weight: 600;
+            opacity: 0.9;
+            max-width: 800px;
+        }
+
+        /* 内容布局 */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .content-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .card-text {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* 列表样式 */
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: start;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 20px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        /* 对比表格 */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .comparison-table th {
+            background: var(--gradient-2);
+            color: white;
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover {
+            background: var(--bg-light);
+        }
+
+        /* 高亮文本 */
+        .highlight {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.1));
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary-color);
+            margin: 30px 0;
+        }
+
+        /* 流程图样式 */
+        .flow-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .flow-item {
+            flex: 1;
+            text-align: center;
+        }
+
+        .flow-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--gradient-2);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin: 0 auto 20px;
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .flow-arrow {
+            font-size: 30px;
+            color: var(--text-light);
+        }
+
+        /* 统计数字 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: var(--text-light);
+        }
+
+        /* 响应式 */
+        @media (max-width: 1024px) {
+            .section {
+                padding: 60px 50px;
+            }
+
+            .side-nav {
+                display: none;
+            }
+
+            .content-2col {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 40px 30px;
+            }
+
+            .hero-logo {
+                font-size: 50px;
+            }
+
+            .hero-title {
+                font-size: 24px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 侧边导航 -->
+    <nav class="side-nav">
+        <a href="#hero" data-label="首页"></a>
+        <a href="#what-is" data-label="项目定义"></a>
+        <a href="#opportunity" data-label="时代机遇"></a>
+        <a href="#problems" data-label="行业痛点"></a>
+        <a href="#innovations" data-label="核心创新"></a>
+        <a href="#architecture" data-label="技术架构"></a>
+        <a href="#tokenomics" data-label="经济模型"></a>
+        <a href="#rwa-mechanism" data-label="RWA机制"></a>
+        <a href="#roadmap" data-label="路线图"></a>
+        <a href="#team" data-label="团队"></a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-logo">AIXC</div>
+        <div class="hero-title">Economy of Decentralized Intelligent Asset Infrastructure</div>
+        <div class="hero-subtitle">Enabling $300T Real-World Assets to Think, Act & Earn</div>
+            </section>
+
+    <!-- Section 1: 项目定义 -->
+    <section id="what-is" class="section">
+        <div class="section-header">
+            <div class="section-number">01 / 项目定义</div>
+            <h2 class="section-title">AIXC 是什么？</h2>
+            <p class="section-subtitle">AIXC 不是另一个区块链，而是一个让资产能够思考、学习并自主创造价值的经济体系的基础协议</p>
+        </div>
+
+        <div class="highlight-box">
+            <h3 style="font-size: 28px; margin-bottom: 20px;">核心问题</h3>
+            <p style="font-size: 18px; line-height: 1.8;">
+                具身智能（EAI）设备已能执行复杂物理任务，但它们缺乏基础设施来：<br>
+                • 证明其工作<br>
+                • 量化其价值<br>
+                • 无需中介进行交易<br><br>
+                <strong class="highlight">AIXC 提供了这一基础设施</strong>
+            </p>
+                        </div>
+
+        <div class="content-grid">
+            <div class="card">
+                <div class="card-icon">🤝</div>
+                <div class="card-title">EAI/xEAI 双智能架构</div>
+                <div class="card-text">连接物理执行与链上协同。EAI 在现实世界工作，xEAI（基于 ERC-8004）在链上协调价值结算</div>
+                        </div>
+            <div class="card">
+                <div class="card-icon">🔐</div>
+                <div class="card-title">PoAI 共识</div>
+                <div class="card-text">通过加密证明验证并奖励智能贡献。将智能劳动纳入共识机制，从"资本权益"扩展到"智能贡献"</div>
+                        </div>
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <div class="card-title">去中心化估值网络</div>
+                <div class="card-text">基于现实世界性能数据为资产定价，让资产价值按实际贡献实时更新</div>
+                        </div>
+                    </div>
+
+        <div class="highlight-box" style="margin-top: 50px;">
+            <h3 style="font-size: 24px; margin-bottom: 15px;">EDIAN 架构的自我强化循环</h3>
+            <p style="font-size: 16px; line-height: 1.8;">
+                设备执行任务 → AI 验证价值 → 资产代币化 → 资本流入 → 网络扩张 → 智能提升 → 循环加速
+            </p>
+                </div>
+            </section>
+
+    <!-- Section 2: 核心价值主张 -->
+    <section id="value-prop" class="section">
+        <div class="section-header">
+            <div class="section-number">02 / 核心价值</div>
+            <h2 class="section-title">重新定义"共识"的意义</h2>
+        </div>
+
+        <div class="content-2col">
+            <div>
+                <h3 style="font-size: 28px; margin-bottom: 30px;">传统区块链</h3>
+                <ul class="feature-list" style="list-style: none;">
+                    <li style="border-bottom: 1px solid #e2e8f0; padding: 15px 0;">
+                        <span style="color: var(--text-light); margin-right: 15px;">•</span>
+                        共识 = 节点间账本一致性
+                    </li>
+                    <li style="border-bottom: 1px solid #e2e8f0; padding: 15px 0;">
+                        <span style="color: var(--text-light); margin-right: 15px;">•</span>
+                        价值 = Token 价格
+                    </li>
+                    <li style="padding: 15px 0;">
+                        <span style="color: var(--text-light); margin-right: 15px;">•</span>
+                        资产 = 被动记录
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="font-size: 28px; margin-bottom: 30px; color: var(--primary-color);">AIXC 创新</h3>
+                <ul class="feature-list">
+                    <li><strong>共识</strong> = 现实世界行为的可验证一致性</li>
+                    <li><strong>价值</strong> = 智能体持续贡献的功能价值与真实收益</li>
+                    <li><strong>资产</strong> = 通过智能行为主动创造价值</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="highlight-box" style="margin-top: 50px;">
+            <h3 style="font-size: 24px; margin-bottom: 15px;">从"虚拟的价值"到"真实的价值"</h3>
+            <p style="font-size: 18px; line-height: 1.8;">
+                通过整合 <strong>EAI（具身智能） × 去中心化 AI × 区块链</strong>，使现实世界的每一个智能体都能成为：<br><br>
+                <span class="highlight">共识的参与者</span> | <span class="highlight">价值的创造者</span> | <span class="highlight">收益的获得者</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Section 3: 与现有范式的区别 -->
+    <section id="comparison" class="section">
+        <div class="section-header">
+            <div class="section-number">03 / 差异化</div>
+            <h2 class="section-title">AIXC vs 现有范式</h2>
+        </div>
+
+        <table class="comparison-table">
+                        <thead>
+                <tr>
+                    <th>维度</th>
+                    <th>DeFi</th>
+                    <th>DePIN</th>
+                    <th>RWA</th>
+                    <th style="background: var(--primary-color);">AIXC (EDIAN)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                    <td><strong>资产类型</strong></td>
+                    <td>虚拟代币</td>
+                    <td>物理设备</td>
+                    <td>静态资产</td>
+                    <td><strong class="highlight">智能资产</strong></td>
+                            </tr>
+                            <tr>
+                    <td><strong>价值来源</strong></td>
+                    <td>金融活动</td>
+                    <td>设备贡献</td>
+                    <td>资产映射</td>
+                    <td><strong class="highlight">智能劳动</strong></td>
+                            </tr>
+                            <tr>
+                    <td><strong>验证方式</strong></td>
+                    <td>PoS/PoW</td>
+                    <td>人工确认</td>
+                    <td>法律确权</td>
+                    <td><strong class="highlight">AI 验证 (PoAI)</strong></td>
+                            </tr>
+                            <tr>
+                    <td><strong>进化能力</strong></td>
+                    <td>无</td>
+                    <td>有限</td>
+                    <td>无</td>
+                    <td><strong class="highlight">自我强化</strong></td>
+                            </tr>
+                            <tr>
+                    <td><strong>核心创新</strong></td>
+                    <td>去中心化金融</td>
+                    <td>去中心化基础设施</td>
+                    <td>资产上链</td>
+                    <td><strong class="highlight">资产智能化</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+    </section>
+
+    <!-- Section 4: 时代机遇 -->
+    <section id="opportunity" class="section">
+        <div class="section-header">
+            <div class="section-number">04 / 时代机遇</div>
+            <h2 class="section-title">三股浪潮的交汇</h2>
+        </div>
+
+        <div class="content-grid">
+            <div class="card">
+                <div class="card-icon">🧠</div>
+                <div class="card-title">AI：从虚拟到物理</div>
+                <div class="card-text">
+                    从大语言模型到具身智能的跃迁——智能不再局限于屏幕，而是走进现实世界。<br><br>
+                    <strong>关键问题：</strong>这些价值如何在链上被证明和结算？
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <div class="card-title">DePIN：从资源到智能</div>
+                <div class="card-text">
+                    Helium、Filecoin 证明物理资源可通过代币协调。<br><br>
+                    <strong>但局限：</strong>验证依赖人工或简单规则，无法处理复杂智能行为。当设备从"资源提供者"进化为"智能贡献者"，需要更强验证层。
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🌍</div>
+                <div class="card-title">RWA：从上链到智能</div>
+                <div class="card-text">
+                    全球 $300T 实物资产寻求链上流动性（MiCA、香港框架明确）。<br><br>
+                    <strong>核心论断：</strong>只有万物智能，才能实现真正的万物上链。智能化资产才是真正的链上资产。
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- More sections will be added below -->
+
+    <section id="problems" class="section">
+        <div class="section-header">
+            <div class="section-number">05 / 行业痛点</div>
+            <h2 class="section-title">RWA 的根本困境</h2>
+            <p class="section-subtitle">中心化验证违背区块链的去中心化本质</p>
+        </div>
+
+        <div class="highlight-box">
+            <h3 style="font-size: 24px; margin-bottom: 20px; color: #ef4444;">核心问题：中心化验证</h3>
+            <ul class="feature-list" style="list-style: none;">
+                <li style="border-bottom: 1px solid #e2e8f0; padding: 15px 0;">
+                    <span style="color: #ef4444; margin-right: 15px;">⚠️</span>
+                    依赖审计机构、评估公司、托管机构等中心化机构
+                </li>
+                <li style="border-bottom: 1px solid #e2e8f0; padding: 15px 0;">
+                    <span style="color: #ef4444; margin-right: 15px;">⚠️</span>
+                    信任只是从一个中心转移到另一个中心
+                </li>
+                <li style="border-bottom: 1px solid #e2e8f0; padding: 15px 0;">
+                    <span style="color: #ef4444; margin-right: 15px;">⚠️</span>
+                    预言机依赖中心化数据源，破坏区块链"信任封闭性"
+                </li>
+                <li style="padding: 15px 0;">
+                    <span style="color: #ef4444; margin-right: 15px;">⚠️</span>
+                    验证逻辑违背区块链应自足验证的本质
+                </li>
+            </ul>
+        </div>
+
+        <div class="content-2col" style="margin-top: 50px;">
+            <div>
+                <h3 style="font-size: 24px; margin-bottom: 20px;">衍生问题链</h3>
+                <ul class="feature-list">
+                    <li>单点故障风险：中心化机构失效导致验证体系崩溃</li>
+                    <li>准入门槛高：普通参与者无法独立验证</li>
+                    <li>难审计、难复核：中心化数据无法被分布式网络验证</li>
+                    <li>扩展性受限：中心化机构成为瓶颈</li>
+                    <li>地域碎片化：不同地区依赖不同机构，难以统一</li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="font-size: 24px; margin-bottom: 20px;">其他关键困境</h3>
+                <ul class="feature-list">
+                    <li><strong>静态确权 vs 动态价值：</strong>只能定期"快照式"估值，无法实时捕捉资产价值演化</li>
+                    <li><strong>变革只在发行端：</strong>资产本身未变，房子的 NFT 仍是房产证的数字影印件</li>
+                    <li><strong>代币化≠价值化：</strong>上链后成为静态凭证，无法捕获使用过程中的数据价值</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="innovations" class="section">
+        <div class="section-header">
+            <div class="section-number">06 / 核心创新</div>
+            <h2 class="section-title">六大创新突破</h2>
+        </div>
+
+        <div style="margin-top: 40px; display: grid; gap: 50px;">
+            <div class="card">
+                <h3 style="font-size: 28px; margin-bottom: 20px; color: var(--primary-color);">01 思想创新</h3>
+                <h4 style="font-size: 22px; margin-bottom: 15px; color: var(--text-dark);">从 Tokenization 到 Intelligentization</h4>
+                <p style="font-size: 17px; line-height: 1.8; color: var(--text-dark);">
+                    从"资产映射"到"智能创造"的思想跃迁。现实资产不只是被动记录，而是通过 EAI 具身智能主动参与价值生产。<br><br>
+                    <strong>区块链从"静态确权工具"变为"动态价值机器"</strong>
+                </p>
+            </div>
+
+            <div class="card">
+                <h3 style="font-size: 28px; margin-bottom: 20px; color: var(--primary-color);">02 理论创新</h3>
+                <h4 style="font-size: 22px; margin-bottom: 15px; color: var(--text-dark);">算力竞争→资本验证→智能协作</h4>
+                <p style="font-size: 17px; line-height: 1.8; color: var(--text-dark);">
+                    PoS+PoAI 混合共识将"资本权益"与"智能劳动"统一到同一价值体系。打破 PoW/PoS 单维度限制，让<strong>"智能贡献"成为共识基础的一部分</strong>
+                </p>
+            </div>
+
+            <div class="card">
+                <h3 style="font-size: 28px; margin-bottom: 20px; color: var(--primary-color);">03 技术创新</h3>
+                <h4 style="font-size: 22px; margin-bottom: 15px; color: var(--text-dark);">EAI/xEAI 双智能架构 + 自交易协议栈</h4>
+                <p style="font-size: 17px; line-height: 1.8; color: var(--text-dark);">
+                    创造了由<strong>现实层 EAI</strong> 与<strong>链上层 xEAI</strong> 共同构成的多层智能网络，具备三大技术突破：<br><br>
+                    
+                    <strong>1. EAI 上链标准（EAI Protocol）：</strong>结合 TEE 与 zk-Proof，让 EAI 的现实行为可被验证，并可信地锚定到其对应的 xEAI 身份上<br><br>
+                    
+                    <strong>2. xEAI 链上协同层（xEAI Layer）：</strong>基于 ERC-8004 智能体构建的智能自治调度系统。现实层 EAI 负责"执行"，而链上层 xEAI 负责"协同"——包括任务竞标、路径规划、价值协商与去中心化结算<br><br>
+                    
+                    <strong>3. EAI 自交易协议栈：</strong>由 <strong>ERC-8004</strong>（智能体账户）、<strong>Google AP2</strong>（数据交互）与 <strong>x402</strong>（自主结算）组成，支持智能体的链上身份确权、可信数据交互与自主结算，使每个 EAI 成为具备自我经济循环的独立主体
+                </p>
+            </div>
+
+            <div class="card">
+                <h3 style="font-size: 28px; margin-bottom: 20px; color: var(--primary-color);">04 经济创新</h3>
+                <h4 style="font-size: 22px; margin-bottom: 15px; color: var(--text-dark);">劳动价值论的现代版本</h4>
+                <p style="font-size: 17px; line-height: 1.8; color: var(--text-dark);">
+                    首次将"智能体的学习与执行"纳入经济激励逻辑，构建出智能劳动的经济化模型。EAI 节点可通过完成现实任务获得代币激励；xEAI 则通过算法优化与协作获得系统性收益。<br><br>
+                    <strong>为 AI 参与经济活动建立了可度量、可分配的标准</strong>
+                </p>
+            </div>
+
+            <div class="card">
+                <h3 style="font-size: 28px; margin-bottom: 20px; color: var(--primary-color);">05 制度创新</h3>
+                <h4 style="font-size: 22px; margin-bottom: 15px; color: var(--text-dark);">从人类监管到人机共治</h4>
+                <p style="font-size: 17px; line-height: 1.8; color: var(--text-dark);">
+                    设计了融合人类治理与 AI 自治的 AI-DAO 模型，这种多层治理架构实现了从"人类监管 AI"到"人机共治"的制度创新。<br><br>
+                    <strong>AI 不仅是被治理的对象，也是治理的参与者</strong>
+                </p>
+            </div>
+
+            <div class="card">
+                <h3 style="font-size: 28px; margin-bottom: 20px; color: var(--primary-color);">06 生态创新</h3>
+                <h4 style="font-size: 22px; margin-bottom: 15px; color: var(--text-dark);">共识实境生态</h4>
+                <p style="font-size: 17px; line-height: 1.8; color: var(--text-dark);">
+                    构建的生态体系以共识实境为核心，通过 EAI 设备、xEAI 智能网络、开发者社区、行业合作伙伴共同形成价值循环。<br><br>
+                    <strong>从单一协议到完整生态系统的演化</strong>
+                </p>
+            </div>
+        </div>
+
+        <div class="highlight-box" style="margin-top: 50px;">
+            <h3 style="font-size: 24px; margin-bottom: 20px;">PoAI：验证智能贡献的共识机制</h3>
+            <p style="font-size: 18px; line-height: 1.8;">
+                <strong>真实性验证层：</strong>通过 zkML + TEE 证明 EAI 的任务确实被执行、结果可信且未被篡改<br>
+                <strong>价值评估层：</strong>去中心化 AI 网络对任务结果进行质量与经济价值的多维评估<br><br>
+                <span class="highlight">从"行为真实性"到"价值量化"的完整闭环</span>
+            </p>
+        </div>
+    </section>
+
+    <section id="architecture" class="section">
+        <div class="section-header">
+            <div class="section-number">07 / 技术架构</div>
+            <h2 class="section-title">三层架构设计</h2>
+        </div>
+
+        <div class="flow-container" style="flex-direction: column; gap: 40px;">
+            <div style="width: 100%; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                <h3 style="font-size: 28px; margin-bottom: 20px; color: var(--primary-color);">应用生态层 (Application Ecosystem Layer)</h3>
+                <p style="font-size: 16px; color: var(--text-light); margin-bottom: 15px;"><strong>功能定位：</strong>现实场景与经济接口 | 将 EAI/xEAI 的智能劳动转化为产业级应用与价值流通</p>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                    <span style="background: var(--bg-light); padding: 10px 20px; border-radius: 10px;">RWA 智能资产化</span>
+                    <span style="background: var(--bg-light); padding: 10px 20px; border-radius: 10px;">xEAI 市场</span>
+                    <span style="background: var(--bg-light); padding: 10px 20px; border-radius: 10px;">AI-DAO 治理</span>
+                    <span style="background: var(--bg-light); padding: 10px 20px; border-radius: 10px;">开发者工具</span>
+                </div>
+            </div>
+
+            <div style="width: 100%; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                <h3 style="font-size: 28px; margin-bottom: 20px; color: var(--secondary-color);">操作系统层 (EAI/xEAI OS Layer)</h3>
+                <p style="font-size: 16px; color: var(--text-light); margin-bottom: 15px;"><strong>功能定位：</strong>智能运行与协同内核 | 管理智能体生命周期与任务调度，协调多智能体共识与经济活动</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px;">
+                    <div style="background: var(--bg-light); padding: 20px; border-radius: 10px;">
+                        <strong>EAI 节点网络</strong><br>
+                        <span style="font-size: 14px; color: var(--text-light);">物理执行单元，完成现实任务</span>
+                    </div>
+                    <div style="background: var(--bg-light); padding: 20px; border-radius: 10px;">
+                        <strong>去中心化 AI 网络</strong><br>
+                        <span style="font-size: 14px; color: var(--text-light);">价值评估层，多维验证</span>
+                    </div>
+                    <div style="background: var(--bg-light); padding: 20px; border-radius: 10px;">
+                        <strong>xEAI 协同层</strong><br>
+                        <span style="font-size: 14px; color: var(--text-light);">链上智能体（ERC-8004）</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="width: 100%; background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); color: white; padding: 40px; border-radius: 20px; box-shadow: 0 4px 20px rgba(37,99,235,0.3);">
+                <h3 style="font-size: 28px; margin-bottom: 20px;">基础设施层 (Infrastructure Layer)</h3>
+                <p style="font-size: 16px; margin-bottom: 15px; opacity: 0.95;"><strong>功能定位：</strong>技术底座与信任锚点 | 提供安全共识、可信算力与数据可用性</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-top: 20px;">
+                    <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 10px;">
+                        <div style="font-size: 22px; font-weight: 700; margin-bottom: 5px;">PoS + PoAI</div>
+                        <div style="font-size: 14px; opacity: 0.9;">混合共识机制</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 10px;">
+                        <div style="font-size: 22px; font-weight: 700; margin-bottom: 5px;">L2 Rollup</div>
+                        <div style="font-size: 14px; opacity: 0.9;">高速结算与证明验证</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 10px;">
+                        <div style="font-size: 22px; font-weight: 700; margin-bottom: 5px;">zkML + TEE</div>
+                        <div style="font-size: 14px; opacity: 0.9;">可信计算与零知识证明</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 10px;">
+                        <div style="font-size: 22px; font-weight: 700; margin-bottom: 5px;">DA Layer</div>
+                        <div style="font-size: 14px; opacity: 0.9;">分层数据可用性（EIP-4844）</div>
+                    </div>
+                </div>
+                    </div>
+                </div>
+            </section>
+
+    <section id="tokenomics" class="section">
+        <div class="section-header">
+            <div class="section-number">08 / 经济模型</div>
+            <h2 class="section-title">AIXC 代币经济</h2>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">10亿</div>
+                <div class="stat-label">总供应量（固定上限）</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">0%</div>
+                <div class="stat-label">私募预挖（Fair Launch）</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">65%</div>
+                <div class="stat-label">生态激励</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">20%</div>
+                <div class="stat-label">价格保险基金</div>
+            </div>
+                    </div>
+
+        <div class="content-2col" style="margin-top: 50px;">
+            <div>
+                <h3 style="font-size: 28px; margin-bottom: 30px;">代币分配</h3>
+                <ul class="feature-list">
+                    <li><strong>65% 生态激励：</strong>EAI节点奖励(50%) + 生态基金(10%) + 早期贡献者(5%)</li>
+                    <li><strong>20% 价格保险基金：</strong>保护 RWA 价值稳定</li>
+                    <li><strong>10% 合伙人基金会：</strong>1年cliff + 3年线性释放</li>
+                    <li><strong>5% 代币储备：</strong>循环经济储备</li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="font-size: 28px; margin-bottom: 30px;">价值支撑</h3>
+                <ul class="feature-list">
+                    <li><strong>协议收入：</strong>RWA铸造费、交易手续费、数据服务费、智能体结算费</li>
+                    <li><strong>双重通缩：</strong>
+                        <br>• RWA折旧销毁（资产按实际折旧销毁锁定代币）
+                        <br>• 协议收入回购销毁
+                    </li>
+                    <li><strong>质押锁定：</strong>PoS验证、EAI信誉质押、veAIXC治理锁定</li>
+                            </ul>
+                        </div>
+        </div>
+
+        <div class="highlight-box" style="margin-top: 50px;">
+            <h3 style="font-size: 24px; margin-bottom: 15px; color: #10b981;">Fair Launch 优势</h3>
+            <p style="font-size: 18px; line-height: 1.8;">
+                ✓ TGE时无可交易流通盘<br>
+                ✓ 社区从第一天就与项目利益对齐<br>
+                ✓ 无VC抛压风险<br>
+                ✓ 真正的去中心化发行
+            </p>
+        </div>
+    </section>
+
+    <section id="rwa-mechanism" class="section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+        <div class="section-header">
+            <div class="section-number" style="color: rgba(255,255,255,0.8);">09 / RWA 财富效应</div>
+            <h2 class="section-title" style="color: white;">资产交易时的价值释放机制</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">当你卖车时，不仅获得车款，还解锁代币溢价——这是 AIXC 创造的独特财富效应</p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.95); padding: 50px; border-radius: 20px; color: var(--text-dark); margin-top: 40px;">
+            <h3 style="font-size: 28px; margin-bottom: 30px;">核心机制：锁定代币随币价增值</h3>
+            
+            <div style="background: var(--bg-light); padding: 30px; border-radius: 15px; margin-bottom: 40px;">
+                <p style="font-size: 18px; line-height: 1.8;">
+                    <strong>1. 上链时：</strong>车辆估值 $50,000 → 铸造 50,000 AIXC（锁定）<br>
+                    <strong>2. 持有期：</strong>每天驾驶获得流通代币奖励 | 锁定代币按折旧曲线销毁<br>
+                    <strong>3. 交易时：</strong>若币价上涨，卖方解锁超出部分 = <span class="highlight">凭空获得增值收益</span>
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px;">
+                <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                    <h4 style="font-size: 22px; margin-bottom: 20px; color: #ef4444;">情景A：币价下跌至 $0.80</h4>
+                    <p style="font-size: 16px; line-height: 1.8; color: var(--text-dark);">
+                        车辆残值：$40,000<br>
+                        需要代币：50,000 AIXC<br>
+                        卖方持有：40,000 AIXC（折旧后）<br>
+                        <strong style="color: #ef4444;">保险基金补足：10,000 AIXC</strong><br><br>
+                        <strong>卖方保护：</strong>即使币价下跌，买方仍能获得等值资产，卖方正常出售
+                    </p>
+                </div>
+                <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                    <h4 style="font-size: 22px; margin-bottom: 20px; color: #10b981;">情景B：币价上涨至 $2.00</h4>
+                    <p style="font-size: 16px; line-height: 1.8; color: var(--text-dark);">
+                        车辆残值：$40,000<br>
+                        需要代币：20,000 AIXC<br>
+                        卖方持有：40,000 AIXC（折旧后）<br>
+                        <strong style="color: #10b981;">卖方解锁：20,000 AIXC</strong><br><br>
+                        <strong>财富效应：</strong>卖方获得 $40,000 车款 + $40,000 解锁代币 = <strong style="color: #10b981;">$80,000 总收益（100%涨幅）</strong>
+                    </p>
+                </div>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); padding: 40px; border-radius: 15px; margin-top: 40px; color: white;">
+                <h4 style="font-size: 24px; margin-bottom: 20px; text-align: center;">利益对齐机制</h4>
+                <p style="font-size: 18px; line-height: 1.8; text-align: center; opacity: 0.95; margin-bottom: 30px;">
+                    资产持有者通过锁定代币机制，与协议价值形成深度绑定。<br>
+                    当更多资产上链、网络价值增长时，所有资产持有者共同受益。
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px;">
+                    <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 10px;">
+                        <div style="font-size: 32px; margin-bottom: 10px;">01</div>
+                        <strong style="font-size: 18px;">持有实体资产</strong><br>
+                        <span style="font-size: 14px; opacity: 0.9; line-height: 1.6;">同时持有锁定代币，形成价值锚定</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 10px;">
+                        <div style="font-size: 32px; margin-bottom: 10px;">02</div>
+                        <strong style="font-size: 18px;">每日使用获得奖励</strong><br>
+                        <span style="font-size: 14px; opacity: 0.9; line-height: 1.6;">驾驶、数据贡献产生流通代币收益</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 10px;">
+                        <div style="font-size: 32px; margin-bottom: 10px;">03</div>
+                        <strong style="font-size: 18px;">代币价格上涨</strong><br>
+                        <span style="font-size: 14px; opacity: 0.9; line-height: 1.6;">锁定代币市值增长（暂不可卖）</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 10px;">
+                        <div style="font-size: 32px; margin-bottom: 10px;">04</div>
+                        <strong style="font-size: 18px;">资产交易时变现</strong><br>
+                        <span style="font-size: 14px; opacity: 0.9; line-height: 1.6;">解锁超出部分，实现增值收益</span>
+                    </div>
+                </div>
+                        </div>
+                    </div>
+
+        <div style="background: rgba(255,255,255,0.1); padding: 40px; border-radius: 20px; margin-top: 40px; backdrop-filter: blur(10px);">
+            <h3 style="font-size: 28px; margin-bottom: 20px; text-align: center;">与传统 RWA 的根本区别</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;">
+                <div>
+                    <h4 style="font-size: 20px; margin-bottom: 15px; opacity: 0.9;">传统 RWA</h4>
+                    <p style="opacity: 0.85; line-height: 1.8;">
+                        资产持有者 ≠ 代币持有者<br>
+                        代币价格上涨 → 只有代币投资人受益<br>
+                        资产持有者不care代币表现
+                    </p>
+                </div>
+                <div>
+                    <h4 style="font-size: 20px; margin-bottom: 15px; color: #fbbf24;">AIXC RWA</h4>
+                    <p style="line-height: 1.8; font-weight: 500;">
+                        资产持有者 = 锁定代币持有者<br>
+                        代币价格上涨 → 资产持有者直接受益<br>
+                        <strong style="color: #fbbf24;">用户主动推动币价上涨</strong>
+                    </p>
+                </div>
+            </div>
+                </div>
+            </section>
+
+    <section id="roadmap" class="section">
+        <div class="section-header">
+            <div class="section-number">10 / 发展路线</div>
+            <h2 class="section-title">12个月里程碑</h2>
+        </div>
+
+        <div style="position: relative; padding-left: 50px;">
+            <div style="position: absolute; left: 20px; top: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));"></div>
+            
+            <div style="margin-bottom: 50px; position: relative;">
+                <div style="position: absolute; left: -38px; width: 40px; height: 40px; border-radius: 50%; background: var(--primary-color); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700;">Q1</div>
+                <div class="card" style="margin-left: 20px;">
+                    <h3 style="font-size: 24px; margin-bottom: 15px;">TGE + 首批资产上链</h3>
+                    <ul class="feature-list">
+                        <li>Fair Launch 完成</li>
+                        <li>首批 1,000 台智能车辆上链</li>
+                        <li>测试网数据公开验证</li>
+                        <li>DEX 流动性池建立</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 50px; position: relative;">
+                <div style="position: absolute; left: -38px; width: 40px; height: 40px; border-radius: 50%; background: var(--primary-color); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700;">Q2</div>
+                <div class="card" style="margin-left: 20px;">
+                    <h3 style="font-size: 24px; margin-bottom: 15px;">TVL 突破 + DePIN 网络上线</h3>
+                    <ul class="feature-list">
+                        <li>TVL 达到 $50M+</li>
+                        <li>首笔 RWA 交易完成（解锁案例）</li>
+                        <li>去中心化 AI 网络上线</li>
+                        <li>CEX 上币（目标：Binance）</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 50px; position: relative;">
+                <div style="position: absolute; left: -38px; width: 40px; height: 40px; border-radius: 50%; background: var(--primary-color); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700;">Q3</div>
+                <div class="card" style="margin-left: 20px;">
+                    <h3 style="font-size: 24px; margin-bottom: 15px;">场景扩展</h3>
+                    <ul class="feature-list">
+                        <li>扩展至机器人、无人机场景</li>
+                        <li>10,000+ 智能资产接入</li>
+                        <li>B端企业合作（物流/工业）</li>
+                        <li>DeFi 集成（RWA 抵押借贷）</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="position: relative;">
+                <div style="position: absolute; left: -38px; width: 40px; height: 40px; border-radius: 50%; background: var(--secondary-color); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700;">Q4</div>
+                <div class="card" style="margin-left: 20px;">
+                    <h3 style="font-size: 24px; margin-bottom: 15px;">DAO 治理 + 规模化</h3>
+                    <ul class="feature-list">
+                        <li>DAO 治理启动（veAIXC）</li>
+                        <li>100,000+ 设备接入目标</li>
+                        <li>跨链桥部署</li>
+                        <li>开发者生态基金启动</li>
+                    </ul>
+                </div>
+            </div>
+                </div>
+            </section>
+
+    <section id="team" class="section">
+        <div class="section-header">
+            <div class="section-number">11 / 团队与背书</div>
+            <h2 class="section-title">团队实力</h2>
+        </div>
+
+        <div class="content-grid">
+            <div class="card">
+                <div class="card-icon">👥</div>
+                <div class="card-title">核心团队</div>
+                <div class="card-text">
+                    X年 Web3 经验 + X年 AI/硬件经验<br>
+                    来自以太坊基金会、Google、特斯拉等顶级机构
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🤝</div>
+                <div class="card-title">战略合作</div>
+                <div class="card-text">
+                    车队/车企合作伙伴<br>
+                    DePIN 网络合作<br>
+                    Layer2 与预言机技术合作
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔒</div>
+                <div class="card-title">安全与合规</div>
+                <div class="card-text">
+                    智能合约审计：CertiK/Trail of Bits<br>
+                    TEE 认证：Intel SGX/AWS Nitro<br>
+                    合规框架：MiCA/香港虚拟资产框架
+                </div>
+            </div>
+        </div>
+
+        <div class="highlight-box" style="margin-top: 50px;">
+            <h3 style="font-size: 28px; margin-bottom: 20px;">为什么选择 Binance？</h3>
+            <div class="content-2col">
+                <ul class="feature-list">
+                    <li>全球最大现货+合约流动性</li>
+                    <li>Binance 用户与 AIXC 目标用户高度重合</li>
+                </ul>
+                <ul class="feature-list">
+                    <li>Binance Labs 对 AI+DePIN 的战略布局</li>
+                    <li>需要 Binance 品牌背书加速车企合作</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="summary" class="section" style="background: var(--gradient-1); color: white; text-align: center;">
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <h2 style="font-size: 48px; font-weight: 800; margin-bottom: 20px;">AIXC</h2>
+            <p style="font-size: 24px; opacity: 0.95; margin-bottom: 60px;">具身智能与经济价值之间缺失的层</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; margin-top: 60px;">
+                <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; backdrop-filter: blur(10px);">
+                    <div style="font-size: 48px; margin-bottom: 15px;">🌐</div>
+                    <h3 style="font-size: 20px; margin-bottom: 10px; font-weight: 700;">市场机遇</h3>
+                    <p style="opacity: 0.9; line-height: 1.6;">$300T 实物资产<br>AI/DePIN/RWA 三股浪潮交汇<br>万物智能的时代窗口</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; backdrop-filter: blur(10px);">
+                    <div style="font-size: 48px; margin-bottom: 15px;">🔐</div>
+                    <h3 style="font-size: 20px; margin-bottom: 10px; font-weight: 700;">技术创新</h3>
+                    <p style="opacity: 0.9; line-height: 1.6;">PoS+PoAI 混合共识<br>EAI/xEAI 双智能架构<br>zkML+TEE 可信验证</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; backdrop-filter: blur(10px);">
+                    <div style="font-size: 48px; margin-bottom: 15px;">💎</div>
+                    <h3 style="font-size: 20px; margin-bottom: 10px; font-weight: 700;">经济模型</h3>
+                    <p style="opacity: 0.9; line-height: 1.6;">Fair Launch（0%预挖）<br>65%生态激励<br>双重通缩机制</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; backdrop-filter: blur(10px);">
+                    <div style="font-size: 48px; margin-bottom: 15px;">💰</div>
+                    <h3 style="font-size: 20px; margin-bottom: 10px; font-weight: 700;">财富效应</h3>
+                    <p style="opacity: 0.9; line-height: 1.6;">资产持有者=代币持有者<br>交易时解锁增值收益<br>创造 C 端 FOMO</p>
+        </div>
+    </div>
+
+            <div style="margin-top: 80px; padding: 50px; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: 20px;">
+                <h3 style="font-size: 28px; margin-bottom: 30px;">核心价值主张</h3>
+                <p style="font-size: 22px; line-height: 1.8; opacity: 0.95; margin-bottom: 30px;">
+                    <strong>AIXC 不是另一个区块链</strong><br>
+                    而是一个让资产能够思考、学习并自主创造价值的经济体系的基础协议
+                </p>
+                <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 40px;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 36px; font-weight: 800; color: #fbbf24; margin-bottom: 10px;">设备执行任务</div>
+                        <div style="font-size: 14px; opacity: 0.8;">EAI 现实层</div>
+                    </div>
+                    <div style="font-size: 30px; align-self: center;">→</div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 36px; font-weight: 800; color: #fbbf24; margin-bottom: 10px;">AI 验证价值</div>
+                        <div style="font-size: 14px; opacity: 0.8;">PoAI 共识</div>
+                    </div>
+                    <div style="font-size: 30px; align-self: center;">→</div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 36px; font-weight: 800; color: #fbbf24; margin-bottom: 10px;">资产代币化</div>
+                        <div style="font-size: 14px; opacity: 0.8;">RWA 价值</div>
+                    </div>
+                    <div style="font-size: 30px; align-self: center;">→</div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 36px; font-weight: 800; color: #fbbf24; margin-bottom: 10px;">持续循环</div>
+                        <div style="font-size: 14px; opacity: 0.8;">自我强化</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // 平滑滚动和侧边导航高亮
+        const sections = document.querySelectorAll('.section');
+        const navLinks = document.querySelectorAll('.side-nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // 点击导航平滑滚动
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
+
