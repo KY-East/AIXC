@@ -1413,7 +1413,7 @@ AIXC 采用可控通胀模型（Controlled Inflation Model）。不设置硬性�
 
 ### 激励方式
 
-**【Phase 1】行为挖矿奖励**：EAI 设备通过执行现实任务（如驾驶、配送、巡检等）获得奖励。公式详情见配套文档（https://docs.google.com/document/d/1HK2qVDsi3Bg_CLNM3wUbS4zLo7FOz-yi_UckQWe-yYs/edit）。Phase 1 优先实现行为挖矿。
+**【Phase 1】行为挖矿奖励**：EAI 设备通过执行现实任务（如驾驶、配送、巡检等）获得奖励。公式详情见配套文档。Phase 1 优先实现行为挖矿。
 
 **【Phase 2 规划】数据挖矿奖励**：设备上传高质量数据（驾驶数据、环境数据等）获得奖励。由去中心化 AI 网络评估数据质量。
 
