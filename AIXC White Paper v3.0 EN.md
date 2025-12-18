@@ -450,6 +450,7 @@ EAI (physical devices) participate in economic activities through their on-chain
 - **Functional Positioning:** On-chain entity identity.
 - **System Role:** ERC-8004 is the **core identity standard** for defining xEAI. It binds EAI device physical IDs with programmable on-chain accounts (xEAI), making them embodied entities with verifiable digital personalities.
 - **Core Value:** Solves "who is acting" and "who benefits." It is EAI's "digital passport" for participating in the Web3 economy.
+- **User Experience Optimization:** Leveraging account abstraction technology, end users do not need to create wallets or manage private keys themselves. Within AIXC's in-vehicle ecosystem, users can log in via Web2 identities such as Google accounts, and the system automatically creates on-chain accounts for them, significantly lowering the barrier to Web3 entry.
 
 ##### 2. Google AP2: Trusted Data Transmission and Interaction Interface
 
@@ -1241,15 +1242,17 @@ Tokens are distributed to device nodes, validators, and ecosystem participants c
 
 ### Supply Model
 
-AIXC adopts a Controlled Inflation Model. No hard supply cap is set, ensuring long-term incentive sustainability through dynamic adjustment of annual inflation rates between 2-10%.
+**Total Supply**: 10 Billion AIXC
 
-Initial supply is 200 million AIXC (minted at TGE). Mining emission curves decrease annually, similar to Bitcoin's halving mechanism. Gas fees and other consumption from ecosystem usage form natural deflation. Governance DAO dynamically adjusts inflation rates based on ecosystem scale.
+AIXC adopts a supply model combining **Elastic Abundance + Stable Anchoring + Controlled Adjustment**. The total supply is sufficient to support long-term network growth and incentive sustainability. Through annual peak releases applying elastic abundance mechanisms, smooth releases are achieved with controlled adjustability.
 
-This design doesn't pursue absolute scarcity but seeks "inflation-consumption" dynamic equilibrium. When network scale grows, moderate issuance meets incentive needs. When the network matures, usage consumption naturally suppresses inflation. This avoids expansion bottlenecks caused by fixed supply.
+Mining emission curves decrease annually, similar to Bitcoin's halving mechanism. Gas fees and other consumption from ecosystem usage form natural deflation. Governance DAO dynamically adjusts key parameters based on ecosystem scale.
 
-### New Issuance
+This design pursues "supply-demand-consumption" dynamic equilibrium. When network scale grows, release speeds match incentive needs. When the network matures, usage consumption and real revenue form a self-sustaining economic model. This avoids expansion bottlenecks caused by fixed supply.
 
-Newly issued tokens are 100% used for device contribution rewards (behaviors, data, computing power), not entering team allocation or early investor distribution. This ensures inflation directly serves ecosystem incentives rather than diluting community equity.
+### New Issuance and Release
+
+Newly issued tokens are primarily used for device contribution rewards (behaviors, data, computing power), ensuring inflation directly serves ecosystem incentives.
 
 Inflation emission rates can be dynamically adjusted by DAO based on network scale, usage, staking rates, and other indicators.
 
@@ -1257,7 +1260,7 @@ Inflation emission rates can be dynamically adjusted by DAO based on network sca
 
 Token scarcity is maintained through three mechanisms:
 
-First, **Emission Deceleration**. Inflation emission curves decrease annually. Year 1-3 high inflation period (5-10%) accelerates network expansion. Year 3-5 stable period (3-5%) matches network growth. Year 5+ low inflation period (2-3%) maintains ecosystem vitality.
+First, **Release Deceleration**. Inflation emission curves decrease annually. Year 1-5 high incentive period accelerates network expansion, Year 6+ begins exponential decay (decay coefficient ~0.84), behavioral mining substantially completes after 20 years.
 
 Second, **Usage Consumption**. Gas fee burns, RWA depreciation burns, transaction fee burns, data market fees, and other scenarios consume tokens.
 
@@ -1265,21 +1268,21 @@ Third, **Massive Staking Demand**. PoS validator node staking, EAI device access
 
 ### Initial Allocation
 
-Based on 200 million initial supply:
+Based on 10 billion total supply:
 
 | Allocation Category | Percentage | Amount |
 |---------|------|------|
-| Ecosystem Incentives & Contribution Rewards Pool | 50% | 100 million AIXC |
-| Project Treasury | 20% | 40 million AIXC |
-| Liquidity LP / POL | 10% | 20 million AIXC |
-| Team | 10% | 20 million AIXC |
-| Ecosystem Partners / OEM / Automakers | 5% | 10 million AIXC |
-| Community Reserve / Airdrops | 5% | 10 million AIXC |
-| **Total** | **100%** | **200 million AIXC** |
+| Ecosystem Incentives & Contribution Rewards Pool | 50% | 5 billion AIXC |
+| Project Treasury | 20% | 2 billion AIXC |
+| Liquidity LP / POL | 10% | 1 billion AIXC |
+| Team | 10% | 1 billion AIXC |
+| Ecosystem Partners / OEM / Automakers | 5% | 500 million AIXC |
+| Community Reserve / Airdrops | 5% | 500 million AIXC |
+| **Total** | **100%** | **10 billion AIXC** |
 
 50% for ecosystem incentives ensures value returns to contributors. 10% specifically for liquidity pools ensures token tradability. 20% project treasury for multiple scenarios, more flexible than fixed "insurance funds." Team share of 10% has lock-up periods, interests tied to long-term ecosystem development.
 
-**Ecosystem Incentive Pool Internal Allocation** (50% = 100 million AIXC):
+**Ecosystem Incentive Pool Internal Allocation** (50% = 5 billion AIXC):
 - **Phase 1**: 100% for behavioral mining rewards (other incentive mechanisms not yet launched)
 - **Phase 2 and later**: Based on actual network needs, specific proportions determined through DAO governance, including:
   - Behavioral mining rewards
@@ -1289,6 +1292,26 @@ Based on 200 million initial supply:
   - Ecosystem and governance rewards
 
 Specific proportions will be decided by community voting before Phase 2 launch.
+
+### 20-Year Release Plan
+
+Long-term release plan for behavioral mining incentives:
+
+| Year | Annual Output (tokens) | Notes |
+|------|----------------------|-------|
+| Year 1 | 400,000,000 | Cold start high incentive period |
+| Year 2 | 400,000,000 | Rapid network expansion period |
+| Year 3 | 400,000,000 | User growth acceleration period |
+| Year 4 | 400,000,000 | Rapid business development period |
+| Year 5 | 400,000,000 | Maintain high incentive levels |
+| Year 6 | 517,880,796 | Begin exponential decay |
+| Year 7 | 435,019,869 | Decay coefficient 0.84 |
+| Year 8-20 | Decreasing annually | Continuous decay until completion |
+
+**Release Characteristics**:
+- **Years 1-5**: Fixed annual output of 400 million tokens for cold start and rapid growth
+- **Year 6 onwards**: Exponential decay with coefficient ~0.84
+- **After 20 years**: Behavioral mining substantially completes (~5 billion tokens released), transitioning to pure real revenue driving
 
 ### Release and Lock-up
 
@@ -1336,13 +1359,118 @@ Application scenarios include: Time-sharing rental (sharing idle device usage ri
 
 This section describes the complete incentive system. **Phase 1 (TGE stage) will prioritize launching behavioral mining rewards**; other incentive mechanisms will launch in phases after network maturity.
 
+### Overall Architecture
+
+AIXC economic model adopts multi-layer protection mechanisms:
+
+- **Bottom Layer: Asset Anchoring** (Asset Anchoring) - Prevents air tokens; AIXC generation requires real vehicle assets, revenue from long-term real usage
+- **Middle Layer: Behavioral Contribution** (Behavior Mining) - Prevents short-term speculation; rewards unlock in stages requiring continuous contribution
+- **Top Layer: Reward Distribution** (Reward Distribution) - Prevents overall speculation; ensures stability through adjustable rewards, pace control, and rule constraints
+- **Peripheral: Risk & Governance** (Risk & Governance) - Design boundaries and adjustable parameters
+- **Diagonal: Design Boundary** (Design Boundary) - Does not violate real-world logic
+
 ### User Roles
 
-Contributors in the network include: Device contributors (smart vehicles, phones, robots, and other EAI devices uploading valid behavioral data), data contributors (uploading structured or semi-structured data, enhancing network datasets), computing power contributors (providing edge computing power for AI model task execution), validation nodes (responsible for block production, auditing device behavioral tasks, maintaining network security), developers (building dApps, protocol modules, AI model plugins), ecosystem participants (contributing to ecosystem growth through governance voting, task execution, content creation).
+Network participants divided into three major categories:
 
-### Incentive Methods
+**🔵 Ecosystem Builders**: Require certain qualifications, participate by generating data through behaviors, staking based on assets and rights, providing liquidity, earning elastic incentives.
 
-**【Phase 1】Behavioral Mining Rewards**: EAI devices earn rewards by executing real-world tasks (such as driving, delivery, inspection, etc.). Formula details in supporting documentation (https://docs.google.com/document/d/1HK2qVDsi3Bg_CLNM3wUbS4zLo7FOz-yi_UckQWe-yYs/edit). Phase 1 prioritizes implementing behavioral mining.
+**🟢 Behavior Contributors**: No special qualifications required, generate data rights through behaviors, stack dividends based on assets and rights, earn stable released rewards.
+
+**🟡 Exit/High-value Vehicles**: One-time revenue release, provide liquidity exit, controllable adjusted incentives.
+
+Specifically includes: Device contributors (smart vehicles, phones, robots, and other EAI devices), data contributors (upload structured data), computing power contributors (provide edge computing), validation nodes (maintain network security), developers (build dApps), ecosystem participants (governance voting, task execution).
+
+### Core Incentive Mechanisms
+
+#### 5.4.1 Vehicle Onboarding
+
+When vehicles go on-chain, the system mints corresponding AIXC as initial staking (Mint) based on vehicle value.
+
+**Mint Formula**:
+
+```
+Mint_AIXC = min(
+    max(Vehicle_USD_Value × Collateral_Rate / AIXC_Price, MinCap),
+    MaxCap
+)
+```
+
+**Parameter Explanation**:
+- `Vehicle_USD_Value`: Vehicle USD valuation
+- `Collateral_Rate`: Collateral rate (default 30%)
+- `AIXC_Price`: Current AIXC price
+- `MinCap`: Minimum mint amount
+- `MaxCap`: Maximum mint amount
+
+**Design Purpose**: Control initial vehicle value anchoring; staking locked during holding period; prevent excessive minting.
+
+#### 5.4.2 Staking Rewards (20%)
+
+After vehicle onboarding staking, users can earn staking rewards accounting for 20% of total incentives, released linearly daily over three months.
+
+**Core Mechanisms**:
+- **Weight Calculation**: Staking weight (0.8 × Stake) × Recent 30-day mileage
+- **Reward Pool Distribution**: Distribute daily reward pool based on user weight proportion
+- **Phased Release**:
+  - First 90 days: Release 80%
+  - Days 91-180: Release 50%
+  - After 181 days: Release 30%
+- **Daily Cap**: Prevent concentrated daily release, ensure smooth release
+
+#### 5.4.3 Behavioral Mining (80%)
+
+**【Phase 1】Behavioral Mining Rewards**: EAI devices earn rewards by executing real-world tasks (such as driving, delivery, inspection, etc.), accounting for 80% of total incentives. Phase 1 prioritizes implementing behavioral mining.
+
+**Incentive Adjustment System**:
+
+The system dynamically adjusts user rewards through multiple coefficients:
+
+**1. Staking Tier Coefficient**
+
+| Staking Amount | Lock Period | Tier | Coefficient Bonus |
+|---------|---------|------|---------|
+| < 1,000 AIXC | No lock-up | Tier 0 Basic | 1.0 |
+| 1,000 – 4,999 AIXC | 7-day lock-up | Tier 1 Entry | 1.1 |
+| 5,000 – 19,999 AIXC | 30-day lock-up | Tier 2 Standard | 1.2 |
+| 20,000 – 49,999 AIXC | 60-day lock-up | Tier 3 Advanced | 1.4 |
+| ≥ 50,000 AIXC | 90-day lock-up | Tier 4 Premium | 1.5 |
+
+**2. Account Factor Coefficient**
+
+| User Behavior | Coefficient |
+|---------|------|
+| No staking, inactive | 0.8 |
+| Stake own AIXC at mint | 1.1 |
+| Complete specific tasks | 1.2-1.5 |
+
+**3. Supply Coefficient (SC - Supply Coefficient)**
+
+SC is a comprehensive adjustment parameter affecting Mint permissions, mining rewards, and daily caps:
+
+- **Mint Permission**: SC < 1.0 no Mint allowed (low credit), SC ≥ 6.0 can Mint multiple vehicles
+- **Mining Bonus**: SC ≥ 6.0 can receive 1.5× mining output bonus
+- **Daily Cap**: SC ≥ 6.0 daily cap increased to 1.8×
+
+**4. Vehicle Value Coefficient**
+
+High-value vehicles receive higher coefficient bonuses, incentivizing high-value asset onboarding.
+
+#### 5.4.4 User Reward Case Study
+
+**User A Case**:
+- Vehicle value: $20,000
+- AIXC price: $0.1
+- Collateral Rate: 30%
+- Theoretical Mint amount: 60,000 AIXC
+- Actual Mint (MaxCap limited): 40,000 AIXC
+
+**Revenue Components**:
+1. **Staking Rewards (20%)**: Dynamically released based on staking duration and mileage
+2. **Behavioral Mining (80%)**: Rewards earned based on actual driving mileage and coefficient bonuses
+3. **Long-term Value**: Continuous contribution accumulates reputation, improves SC coefficient, earning higher rewards
+
+#### 5.4.5 Phase 2 Planning
 
 **【Phase 2 Planning】Data Mining Rewards**: Devices uploading high-quality data (driving data, environmental data, etc.) earn rewards. Decentralized AI networks assess data quality.
 
@@ -1354,21 +1482,60 @@ Contributors in the network include: Device contributors (smart vehicles, phones
 
 ### Anti-Cheating Mechanisms
 
-Device reputation system: Each EAI device has a reputation score (Reputation Score); reputation scores affect reward coefficients and staking requirements; cheating behaviors lead to reputation decline; serious offenders banned from access.
+AIXC constructs a multi-layered anti-cheating system:
 
-Multimodal verification: Requires devices to simultaneously collect visual, GPS, IMU, and other multi-sensor data. Inherent consistency constraints between data (such as GPS trajectories matching IMU acceleration integration); contradictory data identified by PoAI verification networks.
+**Device Reputation System**: Each EAI device has a reputation score (Reputation Score); reputation scores affect reward coefficients and staking requirements; cheating behaviors lead to reputation decline; serious offenders banned from access.
 
-Consensus verification layer: Each PoAI verification randomly selects several independent validator nodes from the entire network. Uses VRF (Verifiable Random Functions) to ensure selection process is random and verifiable. Attackers cannot predict which validators will be selected.
+**Multimodal Verification**: Requires devices to simultaneously collect visual, GPS, IMU, and other multi-sensor data. Inherent consistency constraints between data (such as GPS trajectories matching IMU acceleration integration); contradictory data identified by PoAI verification networks.
 
-Anomaly detection models: AI models identify abnormal behavioral patterns (such as household cars suddenly driving abnormally long daily mileage). Abnormal behaviors trigger manual reviews or stake freezing. Continuous anomalies lead to permanent bans.
+**Consensus Verification Layer**: Each PoAI verification randomly selects several independent validator nodes from the entire network. Uses VRF (Verifiable Random Functions) to ensure selection process is random and verifiable. Attackers cannot predict which validators will be selected.
+
+**Anomaly Detection Models**: AI models identify abnormal behavioral patterns (such as household cars suddenly driving abnormally long daily mileage). Abnormal behaviors trigger manual reviews or stake freezing. Continuous anomalies lead to permanent bans.
+
+**Economic Penalty Mechanism**: Staking + Slashing raises attack costs, making cheating revenue far lower than costs. Even if TEE is compromised, attackers must pass through multiple layers of protection, making large-scale cheating economically infeasible.
+
+### Incentive Release Logic Chain
+
+Incentive release follows a strict logic chain: **Generate → Allocate → Unlock → Cap → Anomaly Revenue**
+
+**Release Methods**:
+- Not directly to users, first enters personal quota pool
+- Prevents excessive issuance, every release requires verification
+
+**Allocation Methods**:
+- Behaviors require verification before dividends
+- Limited to real usage, cold start + accumulation phase
+- Earlier minting earns more rewards, incentivizing early participants
+
+**Time Mechanisms**:
+- Time lock mechanism with daily caps
+- Daily rewards distributed dispersedly
+- Exit mechanism: Vehicle sale has time cost
+
+**Anomaly Handling**:
+- Anomaly behavior detection system automatically identifies
+- On-chain sharing, associates all behavioral nodes
+
+**Adjustable Parameters**:
+- Core parameters adjustable by DAO based on needs
+- Real feedback influences parameter adjustments
+
+**Long-term Protection**:
+- Total issuance sustainability assessment
+- Ensures 20-year release plan is executable
 
 ### Incentive Sources and Release
 
-Rewards come from two sources: Inflation release (newly issued tokens 2-10%/year, 100% for device rewards), transaction fee reflux (part of transaction fees and data market fees flow back to reward pools).
+**Reward Sources**:
+1. **Inflation Release**: Newly issued tokens, 100% for ecosystem rewards
+2. **Transaction Fee Reflux**: Part of transaction fees and data market fees flow back to reward pools
 
-Emission models divided into three stages: Cold start period (Year 1-2) high incentives rapidly attract device connections, expansion period (Year 3-5) stable incentives match network growth, mature period (Year 5+) low inflation maintenance relying on transaction fee reflux.
+**Emission Model**:
+- **Cold Start Period (Years 1-5)**: High incentives (400 million annually) rapidly attract device connections
+- **Expansion Period (Year 6+)**: Exponential decay (decay coefficient 0.84) matches network maturity
+- **Mature Period (Year 20+)**: Relies on transaction fee reflux and real revenue driving
 
-DAO can adjust reward parameters based on network scale, device activity, staking rates, and other indicators, including emission rates, reward weights, scoring coefficients. Inflation release tied to network scale ensures incentives match demand. Transaction fee reflux forms long-term incentive sources, avoiding reward exhaustion.
+**Dynamic Adjustment**: DAO can adjust reward parameters based on network scale, device activity, staking rates, and other indicators, including emission rates, reward weights, scoring coefficients. Inflation release tied to network scale ensures incentives match demand. Transaction fee reflux forms long-term incentive sources, avoiding reward exhaustion.
 
 ## 5.5 Penalty Mechanisms
 
