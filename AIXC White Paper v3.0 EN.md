@@ -694,7 +694,7 @@ The EDIAN architecture's core innovation lies in building a complete value close
 
 EAI nodes execute specific tasks in the physical world, generating verifiable behavioral data. Taking smart vehicles as an example: When vehicles execute autonomous driving tasks, their sensor data (vision, lidar, GPS), decision data (path planning, obstacle recognition), and execution data (speed, steering, braking) are all recorded and signed in TEE environments.
 
-This data not only proves task authenticity but also provides high-quality inputs for AI model training. Data is endowed with economic value attributes upon generation—it can be used to train better autonomous driving models, which can improve entire network efficiency.
+This data not only proves task authenticity but also provides high-quality inputs for AI model optimization. Data is endowed with economic value attributes upon generation—it can be used to optimize autonomous driving algorithms, which can improve entire network efficiency.
 
 **Link 2: Intelligent Coordination and Value Evaluation**
 
@@ -704,7 +704,7 @@ xEAI nodes coordinate and evaluate EAI behavior on-chain. When an EAI completes 
 3. Conduct value settlement with other xEAI nodes through x402 and other settlement protocols
 4. Update its own reputation score and governance weight
 
-This link's key is the **decentralized evaluation mechanism**. Value is not determined by a single center but jointly determined by multiple independent AI evaluation nodes, ensuring fairness and anti-manipulation.
+This link's key is the **decentralized evaluation mechanism**. Multiple independent AI evaluation nodes jointly determine value, ensuring fairness and anti-manipulation.
 
 **Link 3: Economic Incentives and Reinvestment**
 
@@ -716,7 +716,7 @@ Based on PoV proofs, EAI nodes and xEAI nodes receive AIXC token rewards. These 
 
 **Three-Ring Closed Loop's Self-Reinforcing Effect:**
 
-More EAI devices connect → Generate more high-quality data → Train better AI models → Improve task execution efficiency → Create more value → Attract more devices to connect → Form positive feedback loops.
+More EAI devices connect → Generate more high-quality data → Optimize AI models → Improve task execution efficiency → Create more value → Attract more devices to connect → Form positive feedback loops.
 
 This design makes the system no longer just a "asset on-chain" static protocol but an **economic machine that continuously creates value and self-evolves**.
 
@@ -745,7 +745,7 @@ AIXC ecosystem's value comes from two levels of real economic activities:
 
 Intelligent devices possess massive idle resources that can be networked and generate real income:
 
-- **Computing Power Sharing**: Intelligent devices (especially smart EVs) are equipped with powerful computing chips; when idle, they can contribute edge computing power. The network aggregates this distributed computing power to provide services for AI training and inference tasks, with computing power contributors earning real service fee income
+- **Computing Power Sharing**: Intelligent devices (especially smart EVs) are equipped with powerful computing chips; when idle, they can contribute edge computing power. The network aggregates this distributed computing power to provide services for AI inference and edge computing tasks, with computing power contributors earning real service fee income
 - **Energy Sharing**: Smart EVs with large-capacity batteries can serve as distributed energy storage units participating in electricity trading (V2G). Charging during low electricity price valleys, selling electricity back to the grid during peak periods, with price differences representing real income
 - **Data Sharing**: Intelligent devices generate high-value data during operation (driving data, environmental data, behavioral data, etc.). After authorization, data can be used for AI training and business analysis, with data contributors earning authorization fee income
 
@@ -949,7 +949,7 @@ The system's incentive mechanism covers all ecosystem participants, forming a co
 
 EAI nodes' revenue comes from multiple channels:
 - **Basic Task Rewards**: Earning AIXC tokens based on PoAI scores after completing tasks
-- **Data Contribution Rewards**: Extra rewards when high-quality data is used for AI model training
+- **Data Contribution Rewards**: Extra rewards when high-quality data is used for AI model optimization
 - **Network Contribution Rewards**: Long-term online, stable nodes earn reputation bonuses with higher yields
 - **Staking Returns**: Nodes staking AIXC tokens earn extra yield bonuses (specific bonus ratios determined by DAO governance)
 
@@ -996,7 +996,7 @@ AIXC ecosystem development follows a "point-to-line, line-to-surface, surface-to
 
 The initial stage focuses on breakthroughs in single vertical scenarios. We chose smart vehicles as the first entry point because:
 - High technical maturity (Tesla, Waymo have validated autonomous driving feasibility)
-- High data value (each vehicle generates several TBs of high-quality sensor data daily)
+- High data value (advanced smart vehicles can generate large volumes of high-quality sensor data daily)
 - Clear economic model (vehicle as asset, driving as income)
 - Large market scale (global vehicle ownership exceeds 1 billion)
 
@@ -1331,7 +1331,7 @@ Community reserves for early user airdrops, community activity rewards, release 
 
 ### Network Operation Functions
 
-Tokens serve as network "fuel," supporting all on-chain operations. Basic operations include paying network Gas fees, transaction fees, cross-chain fees, data storage fees. Resource purchases include purchasing or calling data, AI models, task execution, computing power fees (edge inference, model training). Qualification activation includes activating device network participation qualifications (behavioral mining/data mining), enabling network value-added functions (high bandwidth, priority execution permissions).
+Tokens serve as network "fuel," supporting all on-chain operations. Basic operations include paying network Gas fees, transaction fees, cross-chain fees, data storage fees. Resource purchases include purchasing or calling data, AI models, task execution, computing power fees (edge inference, distributed computing). Qualification activation includes activating device network participation qualifications (behavioral mining/data mining), enabling network value-added functions (high bandwidth, priority execution permissions).
 
 ### Security and Staking Functions
 
@@ -1987,7 +1987,7 @@ AIXC's PoAI verification network is essentially **the mycelial network of the di
 
 This is decentralized coordination. More importantly, this network will **emerge collective consciousness**. Just as mycelial networks make forests super-organisms, PoAI networks make global intelligent devices form super-intelligence. Your car knows city real-time traffic because all cars contribute data; your robot knows how to optimize production because all robots share experiences.
 
-This is an entirely new intelligence form. Not a single super-AI easily shut down or controlled; but **distributed collective intelligence**—impossible to shut down, extremely robust, infinitely scalable. This is true decentralized AI: making AI itself blockchain.
+This is an entirely new intelligence form—**distributed collective intelligence**, impossible to shut down, extremely robust, infinitely scalable. This is true decentralized AI: making AI itself blockchain.
 
 But mycelial networks are only infrastructure; they solve connection problems. The deeper question is: **When physical world events need to reach consensus in the digital world, how do we define reality?**
 
@@ -1997,11 +1997,11 @@ Consensus-Reality is AIXC's core philosophical concept.
 
 Traditional blockchains solve digital world authenticity—whether a transaction occurred, whether account balances are correct. But AIXC's PoAI consensus solves more fundamental problems: **How is physical world authenticity consensed in the digital world**.
 
-A car says it drove 100 kilometers—this is its reality. But when other validator nodes cross-verify through GPS trajectories, acceleration integration, energy consumption data and reach consensus, this becomes network reality. This network reality isn't a direct mapping of the physical world but **consensus-reality** formed through cryptographic verification, mathematical proofs, and economic gaming.
+A car says it drove 100 kilometers—this is its reality. But when other validator nodes cross-verify through GPS trajectories, acceleration integration, energy consumption data and reach consensus, this becomes network reality. This network reality becomes **consensus-reality** formed through cryptographic verification, mathematical proofs, and economic gaming.
 
 This concept's profound significance lies in: **We're creating active participants in physical world digital twins, not just recording reality but changing it**.
 
-When your car drives in the physical world, its xEAI synchronously learns, evolves, accumulates reputation on-chain. When your car completes deliveries in reality, its xEAI earns rewards, upgrades levels, expands influence on-chain. Two worlds aren't parallel but **entangled**; reality influences digital, digital feeds back reality.
+When your car drives in the physical world, its xEAI synchronously learns, evolves, accumulates reputation on-chain. When your car completes deliveries in reality, its xEAI earns rewards, upgrades levels, expands influence on-chain. Two worlds are **entangled**: reality influences digital, digital feeds back reality.
 
 This means future business models will be completely rewritten. Today when you buy a car, you own a depreciating iron box; tomorrow when you buy an EAI vehicle, you own **intelligent assets that work, learn, appreciate**. It's not only depreciating (physical depreciation) but also appreciating (data accumulation, algorithm optimization, reputation enhancement). Its RWA token doesn't just represent how much it's worth but how much value it can create.
 
@@ -2055,7 +2055,7 @@ But whoever you are, you now stand at history's fork. One side continues letting
 
 **This future needs you to build.**
 
-AIXC isn't a finished product but a starting point. We provide protocols, consensus, token economics, but real value is created by ecosystems—applications built by developers, data provided by devices, rules formulated by communities, every decision you make.
+AIXC is a starting point. We provide protocols, consensus, token economics, but real value is created by ecosystems: applications built by developers, data provided by devices, rules formulated by communities, every decision you make.
 
 This is a mycelial network; **every node matters**:
 
